@@ -17,7 +17,7 @@ public class player : MonoBehaviour {
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 10))
         {
-            if (hit.collider.gameObject.tag == "usable" && Input.GetKeyDown(KeyCode.Mouse1))
+            if (hit.collider.gameObject.tag == "usable" && Input.GetKeyDown(KeyCode.Mouse0))
             {  
                  
                 Vector3 pos;
@@ -26,6 +26,10 @@ public class player : MonoBehaviour {
                 pos.z = hit.normal.z * hit.transform.lossyScale.z;
 
                 Instantiate(cube, pos + hit.transform.position, hit.transform.rotation);
+            }
+            if (hit.collider.gameObject.tag == "usable" && Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                Destroy(hit.transform.gameObject);
             }
         }
 
