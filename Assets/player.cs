@@ -19,13 +19,7 @@ public class player : MonoBehaviour {
         {
             if (hit.collider.gameObject.tag == "usable" && Input.GetKeyDown(KeyCode.Mouse0))
             {  
-                 
-                Vector3 pos;
-                pos.x = hit.normal.x * hit.transform.lossyScale.x;
-                pos.y = hit.normal.y * hit.transform.lossyScale.y;
-                pos.z = hit.normal.z * hit.transform.lossyScale.z;
-
-                Instantiate(cube, pos + hit.transform.position, hit.transform.rotation);
+                Instantiate(cube, Vector3.Scale(hit.normal,hit.transform.lossyScale) + hit.transform.position, hit.transform.rotation);
             }
             if (hit.collider.gameObject.tag == "usable" && Input.GetKeyDown(KeyCode.Mouse1))
             {
